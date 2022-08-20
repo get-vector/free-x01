@@ -23,8 +23,7 @@ app.get("/", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   	
   	let _date,
-  		date_string = req.params.date?.indexOf?.('-')==-1?parseInt(req.params.date):req.params.date;
-
+  		date_string = req.params.date?.match?.(/^\d+$/)?parseInt(req.params.date):req.params.date;
   	if(req.params.date===undefined)
       _date = new Date();
   	else
