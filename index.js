@@ -28,7 +28,7 @@ app.get("/api/:date?", function (req, res) {
   		_date = new Date();
   	else
   		if(date_string.indexOf('-')===-1)
-  			_date = new Date(parseInt(date_string));
+  			_date = new Date(date_string);
   		else
   			_date = new Date(Date.UTC(...date_string.split('-').map((v,i)=>parseInt(v)+(i==1?-1:0))));
   	
