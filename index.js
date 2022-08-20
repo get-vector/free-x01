@@ -23,17 +23,17 @@ app.get("/", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   	
   	let _date,
-  		date_string = req.params.date;
-  	if(date_string===undefined)
+  		date_str = req.params.date;
+  	if(date_str===undefined)
   		_date = new Date();
   	else
-  		if(date_string.indexOf('-')===-1){
-        date_string = parseInt(date_string);
+  		if(date_str.indexOf('-')===-1){
+        date_string = parseInt(date_str);
         _date = new Date(date_string);
       }
   			
   		else
-  			_date = new Date(Date.UTC(...date_string.split('-').map((v,i)=>parseInt(v)+(i==1?-1:0))));
+  			_date = new Date(Date.UTC(...date_str.split('-').map((v,i)=>parseInt(v)+(i==1?-1:0))));
   	
   	if(_date.toString() === "Invalid Date")
   		return res.json({error: "Invalid Date"});
