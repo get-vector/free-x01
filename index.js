@@ -33,7 +33,7 @@ app.get("/api/:date?", function (req, res) {
       }
   			
   		else
-  			_date = new Date(Date.UTC(...date_str.split('-').map((v,i)=>parseInt(v)+(i==1?-1:0))));
+  			_date = Date.parse(date_str);
   	
   	if(_date.toString() === "Invalid Date")
   		return res.json({error: "Invalid Date"});
