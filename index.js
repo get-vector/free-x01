@@ -22,16 +22,13 @@ app.get("/", function (req, res) {
 // your first API endpoint... 
 app.get("/api/:date?", function (req, res) {
   	
-  	let _date, date_string;
+  	let _date,
+  		date_string = req.params.date?.indexOf?.('-')==-1?parseInt(req.params.date):req.params.date;
 
   	if(req.params.date===undefined)
-  		date_string = Date.now();
-  	else if(req.params.date.indexOf('-')!=-1)
-  		date_string = Date.parse(req.params.date);
+      _date = new Date();
   	else
-  		date_string = parseInt(req.params.date);
-
-  	_date = new Date(date_string);
+      _date = new Date(date_string);
   	
   	if(_date.toString() === "Invalid Date")
   		return res.json({error: "Invalid Date"});
